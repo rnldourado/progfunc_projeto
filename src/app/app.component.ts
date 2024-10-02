@@ -1,5 +1,5 @@
 import { AppService } from './app.service';
-import { groupBy, orderBy } from '../utils/utils';
+import { foldSum, groupBy, orderBy } from '../utils/utils';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  selectRepositoriesLanguages: string[] = [];
   reposParams: string = '';
   usersParams: string = '';
 
@@ -22,15 +23,21 @@ export class AppComponent {
         return item?.license?.key === 'mit';
       });
       console.log('Filtered Data:', groupBy(data.items, 'owner.login'));
-      console.log('Filtered Data:', orderBy(data.items, 'stargazers_count'));
 
-      this.reposResponse = orderBy(data.items, 'stargazers_count');
+      console.log('forks:', foldSum(data.items, 'forks'));
+
+      this.reposResponse = orderBy(
+        data.items,
+        'stargazers_count',
+        function (param: any) {
+          return (a: any, b: any) => b[param] - a[param];
+        }
+      );
     });
   }
 
   getUsers() {
     this.appService.getUsers(this.usersParams).subscribe((data: any) => {
-      console.log('Data:', data);
       this.usersResponse = data.items;
     });
   }

@@ -14,6 +14,6 @@ export class AppService {
   }
 
   getUsers(param: string) {
-    return this.http.get(`${this.url}users?q=${param}`);
+    return this.http.get(`${this.url}issues?q=${param}`);
   }
 }

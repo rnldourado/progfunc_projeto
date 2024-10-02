@@ -1,0 +1,27 @@
+.main {
+  background-color: #f3f4f6;
+
+  display: flex;
+
+  padding: 32px;
+}
+
+.container {
+  margin: 0 auto;
+  width: 87%;
+  max-width: 1200px;
+
+  border-radius: 16px;
+  background-color: #101414;
+  padding: 16px;
+}
+
+.searcContainer {
+  display: flex;
+}
+
+.title {
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+  color: #e0e3e2;
+}
