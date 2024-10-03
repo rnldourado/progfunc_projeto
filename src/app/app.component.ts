@@ -1,5 +1,5 @@
 import { AppService } from './app.service';
-import { foldSum, groupBy, orderBy } from '../utils/utils';
+import { foldSum, groupBy, orderBy, distinct } from '../utils/utils';
 import { Component } from '@angular/core';
 
 @Component({
@@ -25,6 +25,7 @@ export class AppComponent {
       console.log('Filtered Data:', groupBy(data.items, 'owner.login'));
 
       console.log('forks:', foldSum(data.items, 'forks'));
+      console.log('distinct', distinct(data.items, 'language'));
 
       this.reposResponse = orderBy(
         data.items,

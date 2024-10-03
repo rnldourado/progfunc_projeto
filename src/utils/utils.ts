@@ -21,3 +21,12 @@ export function groupBy(collection: any[], attribute: string) {
 export function orderBy(collection: any[], attribute: any, fns: any) {
   return collection.sort(fns(attribute));
 }
+
+export function distinct(collection: any[], attr: string) {
+  let output: Array<string> = [];
+  collection.map((item: any) => {
+    if (output.includes(item[attr]) || !item[attr]) return;
+    output.push(item[attr]);
+  });
+  return output;
+}
