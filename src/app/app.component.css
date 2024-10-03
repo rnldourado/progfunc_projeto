@@ -25,3 +25,18 @@
   line-height: 2.7rem;
   color: #e0e3e2;
 }
+
+.formContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16px;
+  gap: 48px;
+}
+
+.formItem {
+  color: #e0e3e2;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+}

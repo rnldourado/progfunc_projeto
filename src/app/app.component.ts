@@ -11,23 +11,41 @@ export class AppComponent {
   selectRepositoriesLanguages: string[] = [];
   reposParams: string = '';
   usersParams: string = '';
+  options: any[] = [];
 
   reposResponse: any[] = [];
+  reposResponseCopy: any[] = [];
   usersResponse: any[] = [];
+  languageSelected: string = '';
 
   constructor(private appService: AppService) {}
+
+  selectedLanguage(lang: string) {
+    console.log('Selected Language:', lang);
+    if (lang === this.languageSelected || lang === 'Limpar') {
+      this.reposResponse = this.reposResponseCopy;
+      return;
+    }
+    this.reposResponse = this.reposResponseCopy.filter((item: any) => {
+      return item.language === lang;
+    });
+
+    this.languageSelected = lang;
+  }
 
   getRepos() {
     this.appService.getRepos(this.reposParams).subscribe((data: any) => {
       const a = data.items.filter((item: any) => {
         return item?.license?.key === 'mit';
       });
-      console.log('Filtered Data:', groupBy(data.items, 'owner.login'));
+      // console.log('Filtered Data:', groupBy(data.items, 'owner.login'));
 
-      console.log('forks:', foldSum(data.items, 'forks'));
-      console.log('distinct', distinct(data.items, 'language'));
+      // console.log('forks:', foldSum(data.items, 'forks'));
+      // console.log('distinct', distinct(data.items, 'language'));
 
-      this.reposResponse = orderBy(
+      this.options = distinct(data.items, 'language');
+
+      this.reposResponse = this.reposResponseCopy = orderBy(
         data.items,
         'stargazers_count',
         function (param: any) {

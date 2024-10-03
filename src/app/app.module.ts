@@ -28,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatListModule,
     MatDividerModule,
     MatSelectModule,
+    MatSelectModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
