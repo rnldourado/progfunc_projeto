@@ -1,12 +1,15 @@
 <main class="main">
+
+  <app-repository-search></app-repository-search>
+
   <div class="container">
     <div class="searchContainer">
-      <h1 class="title">Busca por Repositórios</h1>
+      <h1 class="title">Busca por Issues</h1>
       <div class="formContainer">
-        <form (submit)="getRepos()" class="formItem">
+        <form (submit)="getIssues()" class="formItem">
           <mat-form-field>
             <mat-label>Busca</mat-label>
-            <input matInput [(ngModel)]="reposParams" name="reposParams">
+            <input matInput [(ngModel)]="issuesParams" name="issuesParams">
 
             <button mat-icon-button matSuffix type="submit">
               <mat-icon>search</mat-icon>
@@ -16,42 +19,43 @@
 
         @if(options.length > 0) {
         <mat-form-field class="formItem">
-          <mat-label>Linguagens</mat-label>
+          <mat-label>Estados</mat-label>
           <mat-select>
-            <mat-option (click)="selectedLanguage('Limpar')">Limpar</mat-option>
+            <mat-option (click)="selectState('Limpar')">Limpar</mat-option>
             @for (itemSel of options; track itemSel) {
-            <mat-option [value]="itemSel" (click)="selectedLanguage(itemSel)">{{ itemSel }}</mat-option>
+            <mat-option [value]="itemSel" (click)="selectState(itemSel)">{{ itemSel }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
         }
 
-        @if(options.length > 0) {
+        <!-- @if(options.length > 0) {
         <mat-chip-set class="formItem">
           <mat-chip>Stars Count: {{ starsCount }}</mat-chip>
         </mat-chip-set>
-        }
+        } -->
       </div>
 
       <mat-list>
-        @for (item of reposResponse ; track item) {
+        @for (item of issuesResponse ; track item) {
         <mat-list-item>
-          Owner Name: {{ item.full_name }}
+          Creator: {{ item.user.login }}
         </mat-list-item>
         <mat-list-item>
-          Stars Count: {{ item.stargazers_count }}
+          Stars Count: {{ item.created_at | date : 'dd/MM/yyyy HH:mm' }}
         </mat-list-item>
+        @if(item.closed_at) {
         <mat-list-item>
-          Language: {{ item.language }}
+          Stars Count: {{ item.closed_at | date : 'dd/MM/yyyy HH:mm' }}
         </mat-list-item>
-        <mat-list-item>
-          Homepage: {{ item.homepage }}
-        </mat-list-item>
+        }
         <mat-divider></mat-divider>
         }
       </mat-list>
     </div>
   </div>
+
+
 </main>
 
 

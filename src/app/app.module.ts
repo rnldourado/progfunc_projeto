@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
+import { RepositorySearchComponent } from './repository-search/repository-search.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSelectModule,
     MatSelectModule,
     MatChipsModule,
+    RepositorySearchComponent,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

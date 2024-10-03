@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="searchContainer">
+    <h1 class="title">Busca por Repositórios</h1>
+    <div class="formContainer">
+      <form (submit)="getRepos()" class="formItem">
+        <mat-form-field>
+          <mat-label>Busca</mat-label>
+          <input matInput [(ngModel)]="reposParams" name="reposParams">
+
+          <button mat-icon-button matSuffix type="submit">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </form>
+
+      @if(options.length > 0) {
+      <mat-form-field class="formItem">
+        <mat-label>Linguagens</mat-label>
+        <mat-select>
+          <mat-option (click)="selectedLanguage('Limpar')">Limpar</mat-option>
+          @for (itemSel of options; track itemSel) {
+          <mat-option [value]="itemSel" (click)="selectedLanguage(itemSel)">{{ itemSel }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      }
+
+      @if(options.length > 0) {
+      <mat-chip-set class="formItem">
+        <mat-chip>Stars Count: {{ starsCount }}</mat-chip>
+      </mat-chip-set>
+      }
+    </div>
+
+    <mat-list>
+      @for (item of reposResponse ; track item) {
+      <mat-list-item>
+        Owner Name: {{ item.full_name }}
+      </mat-list-item>
+      <mat-list-item>
+        Stars Count: {{ item.stargazers_count }}
+      </mat-list-item>
+      <mat-list-item>
+        Language: {{ item.language }}
+      </mat-list-item>
+      <mat-list-item>
+        Homepage: {{ item.homepage }}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      }
+    </mat-list>
+  </div>
+</div>
