@@ -4,18 +4,20 @@
   display: flex;
 
   padding: 32px;
+  height: 100%;
 }
 
 .container {
   margin: 0 auto;
   width: 87%;
   max-width: 1200px;
-  max-height: 85vh;
+  max-height: 75vh;
 
   border-radius: 16px;
   background-color: #101414;
   padding: 16px;
   overflow: auto;
+  height: fit-content;
 }
 
 .searcContainer {

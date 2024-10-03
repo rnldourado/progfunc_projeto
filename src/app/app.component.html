@@ -1,6 +1,5 @@
 <main class="main">
   <div class="container">
-
     <div class="searchContainer">
       <h1 class="title">Busca por Repositórios</h1>
       <div class="formContainer">
@@ -14,7 +13,6 @@
             </button>
           </mat-form-field>
         </form>
-
 
         @if(options.length > 0) {
         <mat-form-field class="formItem">
@@ -35,7 +33,6 @@
         }
       </div>
 
-
       <mat-list>
         @for (item of reposResponse ; track item) {
         <mat-list-item>
@@ -53,41 +50,7 @@
         <mat-divider></mat-divider>
         }
       </mat-list>
-
-
-
-      <!-- <input type="text"  required> -->
-      <!-- <ul>
-        <li *ngFor="let item of reposResponse">
-          Name: {{ item.full_name }}
-          <br />
-          Stars: {{ item.stargazers_count }}
-          <br />
-          Homepage: {{ item.homepage }}
-          <br />
-          License: {{ item.license?.name }}
-          <br />
-          <br />
-        </li>
-      </ul> -->
     </div>
-
-    <!-- <div>
-      <form (submit)="getUsers()">
-        <label>Busca Usuários</label>
-        <input type="text" [(ngModel)]="usersParams" name="usersParams" required>
-        <button type="submit">Buscar</button>
-      </form>
-
-      <ul>
-        <li *ngFor="let item of usersResponse">
-          User Login: {{ item.login }}
-          <br />
-          User Url: {{ item.url }}
-          <br />
-        </li>
-      </ul>
-    </div> -->
   </div>
 </main>
 

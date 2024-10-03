@@ -39,9 +39,6 @@ export class AppComponent {
 
   getRepos() {
     this.appService.getRepos(this.reposParams).subscribe((data: any) => {
-      const a = data.items.filter((item: any) => {
-        return item?.license?.key === 'mit';
-      });
       // console.log('Filtered Data:', groupBy(data.items, 'owner.login'));
 
       // console.log('forks:', foldSum(data.items, 'forks'));
