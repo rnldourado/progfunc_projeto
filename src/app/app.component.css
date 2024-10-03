@@ -10,10 +10,12 @@
   margin: 0 auto;
   width: 87%;
   max-width: 1200px;
+  max-height: 85vh;
 
   border-radius: 16px;
   background-color: #101414;
   padding: 16px;
+  overflow: auto;
 }
 
 .searcContainer {

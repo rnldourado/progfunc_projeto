@@ -27,6 +27,12 @@
           </mat-select>
         </mat-form-field>
         }
+
+        @if(options.length > 0) {
+        <mat-chip-set class="formItem">
+          <mat-chip>Stars Count: {{ starsCount }}</mat-chip>
+        </mat-chip-set>
+        }
       </div>
 
 
@@ -39,10 +45,10 @@
           Stars Count: {{ item.stargazers_count }}
         </mat-list-item>
         <mat-list-item>
-          Homepage: {{ item.homepage }}
+          Language: {{ item.language }}
         </mat-list-item>
         <mat-list-item>
-          License: {{ item.license?.name }}
+          Homepage: {{ item.homepage }}
         </mat-list-item>
         <mat-divider></mat-divider>
         }

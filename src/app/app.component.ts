@@ -11,12 +11,14 @@ export class AppComponent {
   selectRepositoriesLanguages: string[] = [];
   reposParams: string = '';
   usersParams: string = '';
-  options: any[] = [];
 
   reposResponse: any[] = [];
   reposResponseCopy: any[] = [];
-  usersResponse: any[] = [];
   languageSelected: string = '';
+  options: any[] = [];
+  starsCount: number = 0;
+
+  usersResponse: any[] = [];
 
   constructor(private appService: AppService) {}
 
@@ -24,11 +26,13 @@ export class AppComponent {
     console.log('Selected Language:', lang);
     if (lang === this.languageSelected || lang === 'Limpar') {
       this.reposResponse = this.reposResponseCopy;
+      this.starsCount = foldSum(this.reposResponse, 'stargazers_count');
       return;
     }
     this.reposResponse = this.reposResponseCopy.filter((item: any) => {
       return item.language === lang;
     });
+    this.starsCount = foldSum(this.reposResponse, 'stargazers_count');
 
     this.languageSelected = lang;
   }
@@ -52,6 +56,8 @@ export class AppComponent {
           return (a: any, b: any) => b[param] - a[param];
         }
       );
+
+      this.starsCount = foldSum(this.reposResponse, 'stargazers_count');
     });
   }
 

@@ -11,6 +11,7 @@ body {
   scroll-behavior: smooth;
 
   font-display: swap;
+  box-sizing: border-box;
 
   margin: 0;
 }

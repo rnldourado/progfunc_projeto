@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatDividerModule,
     MatSelectModule,
     MatSelectModule,
+    MatChipsModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
