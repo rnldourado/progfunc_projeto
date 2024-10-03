@@ -30,3 +30,7 @@ export function distinct(collection: any[], attr: string) {
   });
   return output;
 }
+
+export function compose <T, U, V> (func1: (x: U) => V, func2: (x: T) =>U): (x: T) => V{
+  return (x: T) => func1(func2(x));
+}
