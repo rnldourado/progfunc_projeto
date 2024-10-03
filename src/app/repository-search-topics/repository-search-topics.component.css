@@ -1,0 +1,37 @@
+.container {
+  margin: 0 auto;
+  width: 87%;
+  max-width: 1200px;
+  max-height: 75vh;
+
+  border-radius: 16px;
+  background-color: #101414;
+  padding: 16px;
+  overflow: auto;
+  height: fit-content;
+}
+
+.searcContainer {
+  display: flex;
+}
+
+.title {
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+  color: #e0e3e2;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16px;
+  gap: 48px;
+}
+
+.formItem {
+  color: #e0e3e2;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+}

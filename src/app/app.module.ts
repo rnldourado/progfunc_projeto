@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -15,6 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { RepositorySearchComponent } from './repository-search/repository-search.component';
+import { RepositorySearchTopicsComponent } from './repository-search-topics/repository-search-topics.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +35,7 @@ import { RepositorySearchComponent } from './repository-search/repository-search
     MatSelectModule,
     MatChipsModule,
     RepositorySearchComponent,
+    RepositorySearchTopicsComponent
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
