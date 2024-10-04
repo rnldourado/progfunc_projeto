@@ -15,7 +15,7 @@
 
       @if(options.length > 0) {
       <mat-form-field class="formItem">
-        <mat-label>Linguagens</mat-label>
+        <mat-label>Filtrar por Linguagens</mat-label>
         <mat-select>
           <mat-option (click)="selectedLanguage('Limpar')">Limpar</mat-option>
           @for (itemSel of options; track itemSel) {
@@ -23,31 +23,59 @@
           }
         </mat-select>
       </mat-form-field>
-      }
 
-      @if(options.length > 0) {
       <mat-chip-set class="formItem">
         <mat-chip>Stars Count: {{ starsCount }}</mat-chip>
       </mat-chip-set>
       }
     </div>
 
-    <mat-list>
-      @for (item of reposResponse ; track item) {
-      <mat-list-item>
-        Owner Name: {{ item.full_name }}
-      </mat-list-item>
-      <mat-list-item>
-        Stars Count: {{ item.stargazers_count }}
-      </mat-list-item>
-      <mat-list-item>
-        Language: {{ item.language }}
-      </mat-list-item>
-      <mat-list-item>
-        Homepage: {{ item.homepage }}
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      }
-    </mat-list>
+    @defer (when reposResponse.length > 0) {
+    <mat-tab-group>
+      <mat-tab label="Todos">
+        <mat-list>
+          @for (item of reposResponse ; track item.id) {
+          <mat-list-item>
+            Owner Name: {{ item.full_name }}
+          </mat-list-item>
+          <mat-list-item>
+            Stars Count: {{ item.stargazers_count }}
+          </mat-list-item>
+          <mat-list-item>
+            Language: {{ item.language }}
+          </mat-list-item>
+          <mat-list-item>
+            Homepage: {{ item.homepage }}
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          }
+        </mat-list>
+      </mat-tab>
+      <mat-tab label="Agrupados por Linguagem">
+        @for(itemG of groupList; track itemG) {
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ itemG }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list>
+            @for (itemL of groupBy[itemG]; track itemL) {
+            <mat-list-item>
+              Name: {{ itemL.full_name }}
+            </mat-list-item>
+            <mat-list-item>
+              URL: {{ itemL.git_url }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            }
+          </mat-list>
+        </mat-expansion-panel>
+        }
+      </mat-tab>
+    </mat-tab-group>
+    }
+
+
   </div>
 </div>

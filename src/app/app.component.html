@@ -16,24 +16,6 @@
             </button>
           </mat-form-field>
         </form>
-
-        @if(options.length > 0) {
-        <mat-form-field class="formItem">
-          <mat-label>Estados</mat-label>
-          <mat-select>
-            <mat-option (click)="selectState('Limpar')">Limpar</mat-option>
-            @for (itemSel of options; track itemSel) {
-            <mat-option [value]="itemSel" (click)="selectState(itemSel)">{{ itemSel }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-        }
-
-        <!-- @if(options.length > 0) {
-        <mat-chip-set class="formItem">
-          <mat-chip>Stars Count: {{ starsCount }}</mat-chip>
-        </mat-chip-set>
-        } -->
       </div>
 
       <mat-list>
@@ -42,13 +24,20 @@
           Creator: {{ item.user.login }}
         </mat-list-item>
         <mat-list-item>
-          Stars Count: {{ item.created_at | date : 'dd/MM/yyyy HH:mm' }}
+          Creation Date: {{ item.created_at | date : 'dd/MM/yyyy HH:mm' }}
         </mat-list-item>
         @if(item.closed_at) {
         <mat-list-item>
-          Stars Count: {{ item.closed_at | date : 'dd/MM/yyyy HH:mm' }}
+          Close Date: {{ item.closed_at | date : 'dd/MM/yyyy HH:mm' }}
         </mat-list-item>
         }
+        @if(item.body){
+        <mat-list-item>
+          Body: {{ item.body}}
+        </mat-list-item>
+        }
+
+
         <mat-divider></mat-divider>
         }
       </mat-list>
