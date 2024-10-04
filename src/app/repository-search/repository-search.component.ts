@@ -71,10 +71,6 @@ export class RepositorySearchComponent {
 
   getRepos() {
     this.appService.getRepos(this.reposParams).subscribe((data: any) => {
-      // console.log('forks:', foldSum(data.items, 'forks'));
-      // console.log('distinct', distinct(data.items, 'language'));
-      // compose(foldSum(this.reposResponse, 'stargazers_count'), this.filter(data.items, 'language'));
-
       this.options = distinct(data.items, 'language');
 
       this.reposResponse = this.reposResponseCopy = orderBy(
