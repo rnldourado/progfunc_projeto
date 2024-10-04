@@ -1,46 +1,46 @@
 <div class="container">
-    <div class="searchContainer">
-      <h1 class="title">Busca por Tópicos</h1>
-      <div class="formContainer">
-        <form (submit)="getReposByTopic()" class="formItem">
-          <mat-form-field>
-            <mat-label>Busca</mat-label>
-            <input matInput [(ngModel)]="reposParams" name="reposParams">
-  
-            <button mat-icon-button matSuffix type="submit">
-              <mat-icon>search</mat-icon>
-            </button>
-          </mat-form-field>
-        </form>
-  
-        <mat-form-field class="formItem">
-          <mat-label>Compose(f1, f2)</mat-label>
-          <mat-select [(ngModel)]="selectedCompose" (selectionChange)="composeRepos($event.value)">
-            <mat-option value="default">Nenhum</mat-option>
-            <mat-option value="compose1">f1: distinct - linguagem | f2: orderBy - estrelas</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+  <div class="searchContainer">
+    <h1 class="title">Busca por Tópicos</h1>
+    <div class="formContainer">
+      <form (submit)="getReposByTopic()" class="formItem">
+        <mat-form-field>
+          <mat-label>Busca</mat-label>
+          <input matInput [(ngModel)]="reposParams" name="reposParams">
 
-      <mat-list>
-        @for (item of reposResponse ; track item) {
-        <mat-list-item>
-          Owner Name: {{ item.full_name }}
-        </mat-list-item>
-        <mat-list-item>
-          Language: {{ item.language }}
-        </mat-list-item>
-        <mat-list-item>
-          Homepage: {{ item.homepage }}
-        </mat-list-item>
-        <mat-list-item>
-          Stars Count: {{ item.stargazers_count }}
-        </mat-list-item>
-        <mat-list-item>
-          Topics: {{ item.topics }}
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        }
-      </mat-list>
+          <button mat-icon-button matSuffix type="submit">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </form>
+
+      <mat-form-field class="formItem">
+        <mat-label>Compose(f1, f2)</mat-label>
+        <mat-select [(ngModel)]="selectedCompose" (selectionChange)="composeRepos($event.value)">
+          <mat-option value="default">Nenhum</mat-option>
+          <mat-option value="compose1">f1: distinct - linguagem | f2: orderBy - estrelas</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
+
+    <mat-list>
+      @for (item of reposResponse ; track item) {
+      <mat-list-item>
+        Owner Name: {{ item.full_name }}
+      </mat-list-item>
+      <mat-list-item>
+        Language: {{ item.language }}
+      </mat-list-item>
+      <mat-list-item>
+        Homepage: <a href="{{ item.homepage }}" style="color: rgb(0, 160, 160);">{{ item.homepage }}</a>
+      </mat-list-item>
+      <mat-list-item>
+        Stars Count: {{ item.stargazers_count }}
+      </mat-list-item>
+      <mat-list-item>
+        Topics: {{ item.topics }}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      }
+    </mat-list>
   </div>
+</div>

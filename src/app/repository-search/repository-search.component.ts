@@ -36,7 +36,7 @@ export class RepositorySearchComponent {
   options: any[] = [];
   starsCount: number = 0;
 
-  constructor(private appService: AppService) {}
+  constructor(private appService: AppService) { }
 
   selectedLanguage(lang: string) {
     if (lang === this.languageSelected || lang === 'Limpar') {

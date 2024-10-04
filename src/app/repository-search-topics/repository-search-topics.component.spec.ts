@@ -10,7 +10,7 @@ describe('RepositorySearchTopicsComponent', () => {
     await TestBed.configureTestingModule({
       imports: [RepositorySearchTopicsComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(RepositorySearchTopicsComponent);
     component = fixture.componentInstance;
