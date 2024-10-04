@@ -49,7 +49,7 @@ export class RepositorySearchComponent {
   groupList: any = [];
   readonly panelOpenState = false;
 
-  constructor(private appService: AppService) {}
+  constructor(private appService: AppService) { }
 
   selectedLanguage(lang: string) {
     if (lang === this.languageSelected || lang === 'Limpar') {
